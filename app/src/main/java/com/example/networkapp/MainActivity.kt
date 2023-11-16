@@ -70,8 +70,8 @@ class MainActivity : AppCompatActivity() {
         Picasso.get().load(comicObject.getString("img")).into(comicImageView)
         saveComic(
             comicObject.getString("title"),
-            comicObject.getString("img"),
-            comicObject.getString("alt")
+            comicObject.getString("alt"),
+            comicObject.getString("img")
         )
 
     }
@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveComic(comicTitle: String, comicURL: String, comicDescription: String){
+    private fun saveComic(comicTitle: String, comicDescription: String, comicURL: String){
         with(preferences.edit()){
             putString(TITLE_KEY, comicTitle)
             putString(COMIC_URL_KEY, comicURL)
