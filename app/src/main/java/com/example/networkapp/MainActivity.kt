@@ -48,6 +48,7 @@ class MainActivity : AppCompatActivity() {
         numberEditText = findViewById<EditText>(R.id.comicNumberEditText)
         showButton = findViewById<Button>(R.id.showComicButton)
         comicImageView = findViewById<ImageView>(R.id.comicImageView)
+        loadComic()
         showButton.setOnClickListener {
             downloadComic(numberEditText.text.toString())
         }
@@ -76,7 +77,9 @@ class MainActivity : AppCompatActivity() {
     }
     private fun loadComic(){
         with(preferences){
-            titleTextView.text = getPreferences()
+            titleTextView.text = preferences.getString(TITLE_KEY, "empty")
+            descriptionTextView.text = preferences.getString(DESCRIPTION_KEY, "empty")
+            Picasso.get().load(preferences.getString(COMIC_URL_KEY, "empty")).into(comicImageView)
         }
     }
 
